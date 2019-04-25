@@ -1,0 +1,13 @@
+{
+    "name": "tsujitaisuke/perfect-php-framework",
+    "description": "improvement from perfect-php-framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tsujitaisuke",
+            "email": "mail@tsujitaisuke.com"
+        }
+    ],
+    "require": {}
+}
