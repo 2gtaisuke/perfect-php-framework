@@ -2,6 +2,7 @@
     "name": "tsujitaisuke/perfect-php-framework",
     "description": "improvement from perfect-php-framework",
     "type": "library",
+    "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
         {
