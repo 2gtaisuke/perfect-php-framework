@@ -1,9 +1,10 @@
 <?php
 
+namespace Tsuji\PerfectPHPFramework;
+
 /**
- * Router.
- *
- * @author Katsuhiro Ogawa <fivestar@nequal.jp>
+ * Class Router
+ * @package Tsuji\PerfectPHPFramework
  */
 class Router
 {

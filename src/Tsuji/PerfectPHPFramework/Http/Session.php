@@ -1,5 +1,7 @@
 <?php
 
+namespace Tsuji\PerfectPHPFramework\Http;
+
 /**
  * Session.
  *
@@ -39,6 +41,7 @@ class Session
      *
      * @param string $name
      * @param mixed $default 指定したキーが存在しない場合のデフォルト値
+     * @return mixed|null
      */
     public function get($name, $default = null)
     {

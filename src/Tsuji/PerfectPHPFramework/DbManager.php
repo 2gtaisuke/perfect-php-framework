@@ -1,15 +1,19 @@
 <?php
 
+namespace Tsuji\PerfectPHPFramework;
+
+use \PDO;
+
 /**
- * DbManager.
- *
- * @author Katsuhiro Ogawa <fivestar@nequal.jp>
+ * Class DbManager
+ * @package Tsuji\PerfectPHPFramework
  */
 class DbManager
 {
     protected $connections = array();
     protected $repository_connection_map = array();
     protected $repositories = array();
+    protected $fullyQualifiedName;
 
     /**
      * データベースへ接続
@@ -41,7 +45,7 @@ class DbManager
     /**
      * コネクションを取得
      *
-     * @string $name
+     * @param string $name
      * @return PDO
      */
     public function getConnection($name = null)
@@ -93,13 +97,22 @@ class DbManager
         if (!isset($this->repositories[$repository_name])) {
             $repository_class = $repository_name . 'Repository';
             $con = $this->getConnectionForRepository($repository_name);
-
-            $repository = new $repository_class($con);
+            $fully_qualified_name = $this->fullyQualifiedName . $repository_class;
+            $repository = new $fully_qualified_name($con);
 
             $this->repositories[$repository_name] = $repository;
         }
 
         return $this->repositories[$repository_name];
+    }
+
+    /**
+     * DbRepositoryの修飾名を設定する
+     * @param mixed $fullyQualifiedName
+     */
+    public function setFullyQualifiedName($fullyQualifiedName)
+    {
+        $this->fullyQualifiedName = $fullyQualifiedName;
     }
 
     /**

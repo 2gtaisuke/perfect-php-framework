@@ -1,9 +1,10 @@
 <?php
- 
+
+namespace Tsuji\PerfectPHPFramework;
+
 /**
- * View.
- *
- * @author Katsuhiro Ogawa <fivestar@nequal.jp>
+ * Class View
+ * @package Tsuji\PerfectPHPFramework
  */
 class View
 {

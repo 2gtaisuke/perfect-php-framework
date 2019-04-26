@@ -1,9 +1,13 @@
 <?php
 
+namespace Tsuji\PerfectPHPFramework;
+
+use Tsuji\PerfectPHPFramework\Exception\UnauthorizedActionException;
+use Tsuji\PerfectPHPFramework\Exception\HttpNotFoundException;
+
 /**
- * Controller.
- *
- * @author Katsuhiro Ogawa <fivestar@nequal.jp>
+ * Class Controller
+ * @package Tsuji\PerfectPHPFramework
  */
 abstract class Controller
 {
@@ -23,7 +27,9 @@ abstract class Controller
      */
     public function __construct($application)
     {
-        $this->controller_name = strtolower(substr(get_class($this), 0, -10));
+        $class_name = explode('\\', get_class($this));
+        $class_name = end($class_name);
+        $this->controller_name = strtolower(substr($class_name, 0, -10));
 
         $this->application = $application;
         $this->request     = $application->getRequest();
@@ -40,6 +46,7 @@ abstract class Controller
      * @return string レスポンスとして返すコンテンツ
      *
      * @throws UnauthorizedActionException 認証が必須なアクションに認証前にアクセスした場合
+     * @throws HttpNotFoundException メソッドが存在せず、404ページを返した場合
      */
     public function run($action, $params = array())
     {

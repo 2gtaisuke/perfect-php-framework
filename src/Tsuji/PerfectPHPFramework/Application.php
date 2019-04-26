@@ -1,9 +1,17 @@
 <?php
 
+namespace Tsuji\PerfectPHPFramework;
+
+use Exception;
+use Tsuji\PerfectPHPFramework\Http\Request;
+use Tsuji\PerfectPHPFramework\Http\Response;
+use Tsuji\PerfectPHPFramework\Http\Session;
+use Tsuji\PerfectPHPFramework\Exception\HttpNotFoundException;
+use Tsuji\PerfectPHPFramework\Exception\UnauthorizedActionException;
+
 /**
- * Application.
- *
- * @author Katsuhiro Ogawa <fivestar@nequal.jp>
+ * Class Application
+ * @package Tsuji\PerfectPHPFramework
  */
 abstract class Application
 {
@@ -12,6 +20,8 @@ abstract class Application
     protected $response;
     protected $session;
     protected $db_manager;
+    protected $router;
+    protected $login_action = [];
 
     /**
      * コンストラクタ
@@ -125,15 +135,11 @@ abstract class Application
         return $this->db_manager;
     }
 
-    /**
-     * コントローラファイルが格納されているディレクトリへのパスを取得
-     *
-     * @return string
-     */
-    public function getControllerDir()
-    {
-        return $this->getRootDir() . '/controllers';
-    }
+    abstract public function getControllerDir();
+
+    abstract public function getQualifiedNameOfController();
+
+    abstract public function getModelDir();
 
     /**
      * ビューファイルが格納されているディレクトリへのパスを取得
@@ -146,16 +152,6 @@ abstract class Application
     }
 
     /**
-     * モデルファイルが格納されているディレクトリへのパスを取得
-     *
-     * @return stirng
-     */
-    public function getModelDir()
-    {
-        return $this->getRootDir() . '/models';
-    }
-
-    /**
      * ドキュメントルートへのパスを取得
      *
      * @return string
@@ -165,10 +161,9 @@ abstract class Application
         return $this->getRootDir() . '/web';
     }
 
+
     /**
      * アプリケーションを実行する
-     *
-     * @throws HttpNotFoundException ルートが見つからない場合
      */
     public function run()
     {
@@ -200,6 +195,7 @@ abstract class Application
      * @param array $params
      *
      * @throws HttpNotFoundException コントローラが特定できない場合
+     * @throws UnauthorizedActionException 認証に失敗した場合
      */
     public function runAction($controller_name, $action, $params = array())
     {
@@ -219,24 +215,28 @@ abstract class Application
      * 指定されたコントローラ名から対応するControllerオブジェクトを取得
      *
      * @param string $controller_class
-     * @return Controller
+     * @return Controller|bool
      */
     protected function findController($controller_class)
     {
+        $qualified_name = '';
         if (!class_exists($controller_class)) {
+            $qualified_name = $this->getQualifiedNameOfController();
             $controller_file = $this->getControllerDir() . '/' . $controller_class . '.php';
             if (!is_readable($controller_file)) {
                 return false;
             } else {
                 require_once $controller_file;
 
-                if (!class_exists($controller_class)) {
+                if (!class_exists($qualified_name . $controller_class)) {
                     return false;
                 }
             }
         }
 
-        return new $controller_class($this);
+        $fully_qualified_class_name = $qualified_name . $controller_class;
+        return new $fully_qualified_class_name($this);
+        # return new $controller_class($this);
     }
 
     /**

@@ -1,9 +1,12 @@
 <?php
 
+namespace Tsuji\PerfectPHPFramework;
+
+use \PDO;
+
 /**
- * DbRepository.
- *
- * @author Katsuhiro Ogawa <fivestar@nequal.jp>
+ * Class DbRepository
+ * @package Tsuji\PerfectPHPFramework
  */
 abstract class DbRepository
 {
