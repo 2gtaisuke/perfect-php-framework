@@ -10,10 +10,17 @@
             "email": "mail@tsujitaisuke.com"
         }
     ],
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Tsuji\\": "src/Tsuji/"
         }
     },
-    "require": {}
+    "require": {
+        "ext-pdo": "*"
+    }
 }
