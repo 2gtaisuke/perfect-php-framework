@@ -1,10 +1,10 @@
 <?php
 
-namespace Tsuji\PerfectPHPFramework;
+namespace TsujiTaisuke\PerfectPHPFramework;
 
 /**
  * Class Router
- * @package Tsuji\PerfectPHPFramework
+ * @package TsujiTaisuke\PerfectPHPFramework
  */
 class Router
 {

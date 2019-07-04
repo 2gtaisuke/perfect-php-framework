@@ -1,12 +1,12 @@
 <?php
 
-namespace Tsuji\PerfectPHPFramework;
+namespace TsujiTaisuke\PerfectPHPFramework;
 
 use \PDO;
 
 /**
  * Class DbRepository
- * @package Tsuji\PerfectPHPFramework
+ * @package TsujiTaisuke\PerfectPHPFramework
  */
 abstract class DbRepository
 {

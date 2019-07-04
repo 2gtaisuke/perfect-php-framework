@@ -1,11 +1,11 @@
 <?php
 
-namespace Tsuji\PerfectPHPFramework\Exception;
+namespace TsujiTaisuke\PerfectPHPFramework\Exception;
 
 use Exception;
 
 /**
  * Class HttpNotFoundException
- * @package Tsuji\PerfectPHPFramework\Exception
+ * @package TsujiTaisuke\PerfectPHPFramework\Exception
  */
 class HttpNotFoundException extends Exception {};

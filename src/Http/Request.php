@@ -1,6 +1,6 @@
 <?php
 
-namespace Tsuji\PerfectPHPFramework\Http;
+namespace TsujiTaisuke\PerfectPHPFramework\Http;
 
 /**
  * Request.

@@ -1,12 +1,12 @@
 <?php
 
-namespace Tsuji\PerfectPHPFramework;
+namespace TsujiTaisuke\PerfectPHPFramework;
 
 use \PDO;
 
 /**
  * Class DbManager
- * @package Tsuji\PerfectPHPFramework
+ * @package TsujiTaisuke\PerfectPHPFramework
  */
 class DbManager
 {

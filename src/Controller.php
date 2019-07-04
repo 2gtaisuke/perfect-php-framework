@@ -1,13 +1,13 @@
 <?php
 
-namespace Tsuji\PerfectPHPFramework;
+namespace TsujiTaisuke\PerfectPHPFramework;
 
-use Tsuji\PerfectPHPFramework\Exception\UnauthorizedActionException;
-use Tsuji\PerfectPHPFramework\Exception\HttpNotFoundException;
+use TsujiTaisuke\PerfectPHPFramework\Exception\UnauthorizedActionException;
+use TsujiTaisuke\PerfectPHPFramework\Exception\HttpNotFoundException;
 
 /**
  * Class Controller
- * @package Tsuji\PerfectPHPFramework
+ * @package TsujiTaisuke\PerfectPHPFramework
  */
 abstract class Controller
 {

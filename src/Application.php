@@ -1,17 +1,17 @@
 <?php
 
-namespace Tsuji\PerfectPHPFramework;
+namespace TsujiTaisuke\PerfectPHPFramework;
 
 use Exception;
-use Tsuji\PerfectPHPFramework\Http\Request;
-use Tsuji\PerfectPHPFramework\Http\Response;
-use Tsuji\PerfectPHPFramework\Http\Session;
-use Tsuji\PerfectPHPFramework\Exception\HttpNotFoundException;
-use Tsuji\PerfectPHPFramework\Exception\UnauthorizedActionException;
+use TsujiTaisuke\PerfectPHPFramework\Http\Request;
+use TsujiTaisuke\PerfectPHPFramework\Http\Response;
+use TsujiTaisuke\PerfectPHPFramework\Http\Session;
+use TsujiTaisuke\PerfectPHPFramework\Exception\HttpNotFoundException;
+use TsujiTaisuke\PerfectPHPFramework\Exception\UnauthorizedActionException;
 
 /**
  * Class Application
- * @package Tsuji\PerfectPHPFramework
+ * @package TsujiTaisuke\PerfectPHPFramework
  */
 abstract class Application
 {
